@@ -1,0 +1,9 @@
+---
+Name: ss-logger
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+SiteConfig:
+  extensions:
+    - CLoggerConfExt
