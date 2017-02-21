@@ -16,7 +16,7 @@ class CLog extends Object implements PermissionProvider {
     protected static function get_logger() {
         if (!static::$logger) {
             $conf = SiteConfig::current_site_config();
-            $cls = $conf->CLogBackend;
+            $cls = $conf->CLogBackend ?: 'SSLogBackend';
             static::$logger = new $cls;
         }
         return static::$logger;
@@ -50,6 +50,11 @@ class CLog extends Object implements PermissionProvider {
      * @return [type]           [description]
      */
     public static function log($msg, $severity = self::ERR) {
+
+        // should we log
+        if (!static::get_logger()->shouldLog($severity)) return;
+
+        // apparently so
         static::get_logger()->log($msg, $severity);
     }
 

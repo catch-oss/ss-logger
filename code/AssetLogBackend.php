@@ -16,7 +16,7 @@ class AssetLogBackend extends CLogBackend {
      * @var array
      */
     protected static $defaults = [
-        'maxLogSize' => 1024 * 1024 * 100,
+        'maxLogSize' => 100000000,
     ];
 
     /**
@@ -82,9 +82,6 @@ class AssetLogBackend extends CLogBackend {
 
     public function log($msg, $severity = CLog::ERR) {
 
-        // should we log
-        if (!$this->shouldLog($severity)) return;
-
         // obtain the conf
         $conf = static::get_conf();
 
@@ -115,6 +112,6 @@ class AssetLogBackend extends CLogBackend {
         }
 
         // write the file
-        file_put_contents($file, $msg, 'FILE_APPEND');
+        file_put_contents($file, $msg, FILE_APPEND);
     }
 }

@@ -13,23 +13,33 @@ class CLogConfExt extends DataExtension {
     );
 
     public function updateCMSFields($fields) {
+
+        // classes
+        $classes = ClassInfo::subclassesFor('CLogBackend');
+        $flt = [];
+        foreach ($classes as $k => $v) {
+            if ($k != 'CLogBackend')
+                $flt[$k] = $v;
+        }
+
+        // update
         $fields->addFieldsToTab(
             'Root.CLog',
             [
                 new DropdownField(
                     'CLogBackend',
                     'Logging Interface',
-                    ClassInfo::subclassesFor('CLogBackend')
+                    $flt
                 ),
                 new DropdownField(
                     'CLogLevel',
                     'Log Level',
                     [
-                        'ERR' => CLog::ERR,
-                        'WARN' => CLog::WARN,
-                        'NOTICE' => CLog::NOTICE,
-                        'INFO' => CLog::INFO,
-                        'DEBUG' => CLog::DEBUG
+                        CLog::ERR => 'ERR',
+                        CLog::WARN => 'WARN',
+                        CLog::NOTICE => 'NOTICE',
+                        CLog::INFO => 'INFO',
+                        CLog::DEBUG => 'DEBUG',
                     ]
                 ),
             ]

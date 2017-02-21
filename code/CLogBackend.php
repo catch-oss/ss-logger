@@ -7,7 +7,7 @@ abstract class CLogBackend {
      * @param  int $severity
      * @return boolean
      */
-    protected function shouldLog($severity) {
+    public function shouldLog($severity) {
         $conf = SiteConfig::current_site_config();
         return $conf->CLogLevel <= $severity;
     }
