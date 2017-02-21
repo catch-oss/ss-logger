@@ -13,13 +13,34 @@ class CLog extends Object implements PermissionProvider {
 
     protected static $logger;
 
-    protected static function getLogger() {
+    protected static function get_logger() {
         if (!static::$logger) {
             $conf = SiteConfig::current_site_config();
             $cls = $conf->CLogBackend;
             static::$logger = new $cls;
         }
         return static::$logger;
+    }
+
+    public static function severity_name($code) {
+        switch ($code) {
+            case Zend_Log::EMERG:    // 0: Emergency: system is unusable
+                return 'EMERG';
+            case Zend_Log::ALERT:    // 1: Alert: action must be taken immediately
+                return 'ALERT';
+            case Zend_Log::CRIT:     // 2: Critical: critical conditions
+                return 'CRIT';
+            case Zend_Log::ERR:      // 3: Error: error conditions
+                return 'ERR';
+            case Zend_Log::WARN:     // 4: Warning: warning conditions
+                return 'WARN';
+            case Zend_Log::NOTICE:   // 5: Notice: normal but significant condition
+                return 'NOTICE';
+            case Zend_Log::INFO:     // 6: Informational: informational messages
+                return 'INFO';
+            case Zend_Log::DEBUG:    // 7: Debug: debug messages
+                return 'DEBUG';
+        }
     }
 
     /**
@@ -29,7 +50,7 @@ class CLog extends Object implements PermissionProvider {
      * @return [type]           [description]
      */
     public static function log($msg, $severity = self::ERR) {
-        static::getLogger()->log($msg, $severity);
+        static::get_logger()->log($msg, $severity);
     }
 
     /**
@@ -38,7 +59,7 @@ class CLog extends Object implements PermissionProvider {
      */
     public function providePermissions() {
         return array(
-            "ACCESS_LOGS" => "Access Data Object Export Utility"
+            "ACCESS_LOGS" => "Access Log Export Utility"
         );
     }
 }
