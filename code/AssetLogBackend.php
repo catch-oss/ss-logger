@@ -89,12 +89,31 @@ class AssetLogBackend extends CLogBackend {
         $dir = 'clog';
         $fullPath = ASSETS_PATH . '/' . $dir;
 
-        // make sure the dir exists
-        if (!is_dir($fullPath))
-            mkdir($fullPath, 0777, true);
+        // init some path vars
+        $dirRelPath = 'assets/' . $dir . '/';
+
+        // ensure we have folder record
+        if (!$folder = DataObject::get_one('Folder', 'Filename = \'' . $dirRelPath . '\'')) {
+
+            // make sure the dir exists
+            if (!is_dir($fullPath))
+                mkdir($fullPath, 0777, true);
+
+            // create record
+            $folder = Folder::create()->update([
+                'Name' => $dir,
+                'Title' => $dir,
+                'Filename' => $dirRelPath,
+                'ParentID' => 0,
+                'OwnerID' => 1,
+            ]);
+
+            // did it work
+            $folder->write();
+        }
 
         // make sure there's an htaccess file blocking access
-        file_put_contents('Require all denied', ASSETS_PATH . '/' . $dir . '/.htaccess');
+        file_put_contents(ASSETS_PATH . '/' . $dir . '/.htaccess', 'Require all denied');
 
         // generate the path
         $logFile = CLog::severity_name($severity) . '.log';
@@ -109,6 +128,22 @@ class AssetLogBackend extends CLogBackend {
                 }
                 rename($file, $file . '.' . $i);
             }
+        }
+
+        // ensure we have a file record
+        if (!$iFile = DataObject::get_one('File', 'Filename = \'' . $dirRelPath . $file . '\'')) {
+
+            // create record
+            $iFile = File::create()->update([
+                'Name' => $file,
+                'Title' => $file,
+                'Filename' => $dirRelPath . $file,
+                'ParentID' => $folder->ID,
+                'OwnerID' => 1,
+            ]);
+
+            // did it work
+            $iFile->write();
         }
 
         // write the file

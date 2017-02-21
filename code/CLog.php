@@ -64,7 +64,7 @@ class CLog extends Object implements PermissionProvider {
      */
     public function providePermissions() {
         return array(
-            "ACCESS_LOGS" => "Access Log Export Utility"
+            "ACCESS_CLOGS" => "Access Log Export Utility"
         );
     }
 }
