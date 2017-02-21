@@ -6,4 +6,4 @@ After:
 ---
 SiteConfig:
   extensions:
-    - CLoggerConfExt
+    - CLogConfExt
