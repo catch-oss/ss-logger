@@ -12,7 +12,7 @@ class CLogConfExt extends DataExtension {
         'CLogBackend' => 'SSLogBackend'
     );
 
-    public function updateCMSFields($fields) {
+    public function updateCMSFields(FieldList $fields) {
 
         // classes
         $classes = ClassInfo::subclassesFor('CLogBackend');
