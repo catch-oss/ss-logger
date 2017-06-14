@@ -2,7 +2,7 @@
 
 class AssetLogFileExt extends DataExtension {
 
-    public function updateCMSFields((FieldList $fields) {
+    public function updateCMSFields(FieldList $fields) {
 
         // check if it's in the folder
         if (preg_match('/clog/', $this->owner->Filename)) {
