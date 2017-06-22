@@ -4,12 +4,12 @@ class CLogConfExt extends DataExtension {
 
     private static $db = array(
         'CLogBackend' => 'Varchar(255)',
-        'CLogLevel' => 'Boolean',
+        'CLogLevel' => 'Varchar(255)',
     );
 
     private static $defaults = array(
+        'CLogBackend' => 'SSLogBackend',
         'CLogLevel' => CLog::ERR,
-        'CLogBackend' => 'SSLogBackend'
     );
 
     public function updateCMSFields(FieldList $fields) {
