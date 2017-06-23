@@ -131,13 +131,13 @@ class AssetLogBackend extends CLogBackend {
         }
 
         // ensure we have a file record
-        if (!$iFile = DataObject::get_one('File', 'Filename = \'' . $dirRelPath . $file . '\'')) {
+        if (!$iFile = DataObject::get_one('File', 'Filename = \'' . $dirRelPath . $logFile . '\'')) {
 
             // create record
             $iFile = File::create()->update([
                 'Name' => $file,
                 'Title' => $file,
-                'Filename' => $dirRelPath . $file,
+                'Filename' => $dirRelPath . $logFile,
                 'ParentID' => $folder->ID,
                 'OwnerID' => 1,
             ]);
