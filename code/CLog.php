@@ -1,6 +1,6 @@
 <?php
 
-class CLog extends Object implements PermissionProvider {
+class CLog extends SS_Object implements PermissionProvider {
 
     const EMERG   = Zend_Log::EMERG;    // 0: Emergency: system is unusable
     const ALERT   = Zend_Log::ALERT;    // 1: Alert: action must be taken immediately
