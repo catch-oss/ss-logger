@@ -1,5 +1,10 @@
 <?php
 
+namespace CatchDesign\SSLogger;
+
+use SiteConfig;
+
+
 abstract class CLogBackend {
 
     /**

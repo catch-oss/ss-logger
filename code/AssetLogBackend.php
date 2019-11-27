@@ -1,5 +1,13 @@
 <?php
 
+namespace CatchDesign\SSLogger;
+
+use Config;
+use DataObject;
+use Folder;
+use File;
+
+
 class AssetLogBackend extends CLogBackend {
 
     // -------------

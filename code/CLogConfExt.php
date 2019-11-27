@@ -1,5 +1,16 @@
 <?php
 
+namespace CatchDesign\SSLogger;
+
+use DataExtension;
+use FieldList;
+use ClassInfo;
+use DropdownField;
+use CatchDesign\SSLogger\SSLogBackend;
+use CatchDesign\SSLogger\CLogBackend;
+
+
+
 class CLogConfExt extends DataExtension {
 
     private static $db = array(
@@ -8,17 +19,17 @@ class CLogConfExt extends DataExtension {
     );
 
     private static $defaults = array(
-        'CLogBackend' => 'SSLogBackend',
+        'CLogBackend' => SSLogBackend::class,
         'CLogLevel' => CLog::ERR,
     );
 
     public function updateCMSFields(FieldList $fields) {
 
         // classes
-        $classes = ClassInfo::subclassesFor('CLogBackend');
+        $classes = ClassInfo::subclassesFor(CLogBackend::class);
         $flt = [];
         foreach ($classes as $k => $v) {
-            if ($k != 'CLogBackend')
+            if ($k != CLogBackend::class)
                 $flt[$k] = $v;
         }
 
@@ -27,7 +38,7 @@ class CLogConfExt extends DataExtension {
             'Root.CLog',
             [
                 new DropdownField(
-                    'CLogBackend',
+                    CLogBackend::class,
                     'Logging Interface',
                     $flt
                 ),

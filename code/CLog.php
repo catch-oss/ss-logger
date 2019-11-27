@@ -1,6 +1,23 @@
 <?php
 
-class CLog extends Object implements PermissionProvider {
+namespace CatchDesign\SSLogger;
+
+use SilverStripe\Core\Extensible;
+use SilverStripe\Core\Injector\Injectable;
+use SilverStripe\Core\Config\Configurable;
+
+use PermissionProvider;
+use Zend_Log;
+use SiteConfig;
+use CatchDesign\SSLogger\SSLogBackend;
+
+
+
+class CLog implements PermissionProvider {
+
+    use Extensible;
+    use Injectable;
+    use Configurable;
 
     const EMERG   = Zend_Log::EMERG;    // 0: Emergency: system is unusable
     const ALERT   = Zend_Log::ALERT;    // 1: Alert: action must be taken immediately
@@ -16,7 +33,7 @@ class CLog extends Object implements PermissionProvider {
     protected static function get_logger() {
         if (!static::$logger) {
             $conf = SiteConfig::current_site_config();
-            $cls = $conf->CLogBackend ?: 'SSLogBackend';
+            $cls = $conf->CLogBackend ?: SSLogBackend::class;
             static::$logger = new $cls;
         }
         return static::$logger;

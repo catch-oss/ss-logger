@@ -1,5 +1,12 @@
 <?php
 
+namespace CatchDesign\SSLogger;
+
+use AbstractQueuedJob;
+use QueuedJob;
+use DataObject;
+
+
 /**
  * Queued job to clean up database and clean up miscellaneous files
  *

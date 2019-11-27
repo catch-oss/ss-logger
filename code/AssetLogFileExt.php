@@ -1,5 +1,12 @@
 <?php
 
+namespace CatchDesign\SSLogger;
+
+use DataExtension;
+use FieldList;
+use LiteralField;
+
+
 class AssetLogFileExt extends DataExtension {
 
     public function updateCMSFields(FieldList $fields) {

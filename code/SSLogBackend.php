@@ -1,5 +1,10 @@
 <?php
 
+namespace CatchDesign\SSLogger;
+
+use SS_Log;
+
+
 /**
  * SS_Log will drop log attempts log debug level events in prod etc
  */

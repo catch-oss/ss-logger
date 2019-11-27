@@ -1,0 +1,9 @@
+mappings:
+  CLog: CatchDesign\SSLogger\CLog
+  AssetLogCleanup: CatchDesign\SSLogger\AssetLogCleanup
+  AssetLogFileExt: CatchDesign\SSLogger\AssetLogFileExt
+  SSLogBackend: CatchDesign\SSLogger\SSLogBackend
+  AssetLogFileExporter: CatchDesign\SSLogger\AssetLogFileExporter
+  AssetLogBackend: CatchDesign\SSLogger\AssetLogBackend
+  CLogConfExt: CatchDesign\SSLogger\CLogConfExt
+  CLogBackend: CatchDesign\SSLogger\CLogBackend

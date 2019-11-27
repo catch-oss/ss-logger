@@ -1,5 +1,14 @@
 <?php
 
+namespace CatchDesign\SSLogger;
+
+use Controller;
+use HTTP;
+use Permission;
+use Security;
+use File;
+
+
 class AssetLogFileExporter extends Controller {
 
     private static $allowed_actions = array(
