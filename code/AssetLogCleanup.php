@@ -2,13 +2,10 @@
 
 namespace CatchDesign\SSLogger;
 
-use AbstractQueuedJob;
-use QueuedJob;
-
+use Symbiote\QueuedJobs\Services\AbstractQueuedJob;
+use Symbiote\QueuedJobs\Services\QueuedJob;
 use SilverStripe\Assets\File;
 use SilverStripe\ORM\DataObject;
-
-
 
 /**
  * Queued job to clean up database and clean up miscellaneous files

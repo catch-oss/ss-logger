@@ -2,19 +2,12 @@
 
 namespace CatchDesign\SSLogger;
 
-
-
-
-
 use CatchDesign\SSLogger\SSLogBackend;
 use CatchDesign\SSLogger\CLogBackend;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataExtension;
-
-
-
 
 class CLogConfExt extends DataExtension {
 

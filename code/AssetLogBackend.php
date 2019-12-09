@@ -2,16 +2,10 @@
 
 namespace CatchDesign\SSLogger;
 
-
-
-
-
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Assets\Folder;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Assets\File;
-
-
 
 class AssetLogBackend extends CLogBackend {
 

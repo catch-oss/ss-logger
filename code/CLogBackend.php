@@ -1,11 +1,7 @@
 <?php
-
 namespace CatchDesign\SSLogger;
 
-
 use SilverStripe\SiteConfig\SiteConfig;
-
-
 
 abstract class CLogBackend {
 

@@ -2,14 +2,9 @@
 
 namespace CatchDesign\SSLogger;
 
-
-
-
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataExtension;
-
-
 
 class AssetLogFileExt extends DataExtension {
 

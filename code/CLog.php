@@ -5,16 +5,9 @@ namespace CatchDesign\SSLogger;
 use SilverStripe\Core\Extensible;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Core\Config\Configurable;
-
-
-use Zend_Log;
-
 use CatchDesign\SSLogger\SSLogBackend;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\Security\PermissionProvider;
-
-
-
 
 class CLog implements PermissionProvider {
 
@@ -22,14 +15,14 @@ class CLog implements PermissionProvider {
     use Injectable;
     use Configurable;
 
-    const EMERG   = Zend_Log::EMERG;    // 0: Emergency: system is unusable
-    const ALERT   = Zend_Log::ALERT;    // 1: Alert: action must be taken immediately
-    const CRIT    = Zend_Log::CRIT;     // 2: Critical: critical conditions
-    const ERR     = Zend_Log::ERR;      // 3: Error: error conditions
-    const WARN    = Zend_Log::WARN;     // 4: Warning: warning conditions
-    const NOTICE  = Zend_Log::NOTICE;   // 5: Notice: normal but significant condition
-    const INFO    = Zend_Log::INFO;     // 6: Informational: informational messages
-    const DEBUG   = Zend_Log::DEBUG;    // 7: Debug: debug messages
+    const EMERG   = "EMERG";    // 0: Emergency: system is unusable
+    const ALERT   = "ALERT";    // 1: Alert: action must be taken immediately
+    const CRIT    = "CRIT";     // 2: Critical: critical conditions
+    const ERR     = "ERR";      // 3: Error: error conditions
+    const WARN    = "WARN";     // 4: Warning: warning conditions
+    const NOTICE  = "NOTICE";   // 5: Notice: normal but significant condition
+    const INFO    = "INFO";     // 6: Informational: informational messages
+    const DEBUG   = "DEBUG";   // 7: Debug: debug messages
 
     protected static $logger;
 
@@ -44,22 +37,24 @@ class CLog implements PermissionProvider {
 
     public static function severity_name($code) {
         switch ($code) {
-            case Zend_Log::EMERG:    // 0: Emergency: system is unusable
+            case self::EMERG:    // 0: Emergency: system is unusable
                 return 'EMERG';
-            case Zend_Log::ALERT:    // 1: Alert: action must be taken immediately
+            case self::ALERT:    // 1: Alert: action must be taken immediately
                 return 'ALERT';
-            case Zend_Log::CRIT:     // 2: Critical: critical conditions
+            case self::CRIT:     // 2: Critical: critical conditions
                 return 'CRIT';
-            case Zend_Log::ERR:      // 3: Error: error conditions
+            case self::ERR:      // 3: Error: error conditions
                 return 'ERR';
-            case Zend_Log::WARN:     // 4: Warning: warning conditions
+            case self::WARN:     // 4: Warning: warning conditions
                 return 'WARN';
-            case Zend_Log::NOTICE:   // 5: Notice: normal but significant condition
+            case self::NOTICE:   // 5: Notice: normal but significant condition
                 return 'NOTICE';
-            case Zend_Log::INFO:     // 6: Informational: informational messages
+            case self::INFO:     // 6: Informational: informational messages
                 return 'INFO';
-            case Zend_Log::DEBUG:    // 7: Debug: debug messages
+            case self::DEBUG:    // 7: Debug: debug messages
                 return 'DEBUG';
+            default:
+                return $code;
         }
     }
 
