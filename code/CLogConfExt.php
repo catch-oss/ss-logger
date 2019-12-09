@@ -2,12 +2,17 @@
 
 namespace CatchDesign\SSLogger;
 
-use DataExtension;
-use FieldList;
-use ClassInfo;
-use DropdownField;
+
+
+
+
 use CatchDesign\SSLogger\SSLogBackend;
 use CatchDesign\SSLogger\CLogBackend;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Core\ClassInfo;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\ORM\DataExtension;
+
 
 
 

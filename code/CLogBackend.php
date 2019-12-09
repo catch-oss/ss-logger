@@ -2,7 +2,9 @@
 
 namespace CatchDesign\SSLogger;
 
-use SiteConfig;
+
+use SilverStripe\SiteConfig\SiteConfig;
+
 
 
 abstract class CLogBackend {

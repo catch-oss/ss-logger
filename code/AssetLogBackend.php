@@ -2,10 +2,15 @@
 
 namespace CatchDesign\SSLogger;
 
-use Config;
-use DataObject;
-use Folder;
-use File;
+
+
+
+
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Assets\Folder;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Assets\File;
+
 
 
 class AssetLogBackend extends CLogBackend {
@@ -101,7 +106,7 @@ class AssetLogBackend extends CLogBackend {
         $dirRelPath = 'assets/' . $dir . '/';
 
         // ensure we have folder record
-        if (!$folder = DataObject::get_one('Folder', 'Filename = \'' . $dirRelPath . '\'')) {
+        if (!$folder = DataObject::get_one(Folder::class, 'Filename = \'' . $dirRelPath . '\'')) {
 
             // make sure the dir exists
             if (!is_dir($fullPath))
@@ -139,7 +144,7 @@ class AssetLogBackend extends CLogBackend {
         }
 
         // ensure we have a file record
-        if (!$iFile = DataObject::get_one('File', 'Filename = \'' . $dirRelPath . $logFile . '\'')) {
+        if (!$iFile = DataObject::get_one(File::class, 'Filename = \'' . $dirRelPath . $logFile . '\'')) {
 
             // create record
             $iFile = File::create()->update([

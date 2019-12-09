@@ -6,10 +6,13 @@ use SilverStripe\Core\Extensible;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Core\Config\Configurable;
 
-use PermissionProvider;
+
 use Zend_Log;
-use SiteConfig;
+
 use CatchDesign\SSLogger\SSLogBackend;
+use SilverStripe\SiteConfig\SiteConfig;
+use SilverStripe\Security\PermissionProvider;
+
 
 
 

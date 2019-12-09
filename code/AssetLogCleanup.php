@@ -4,7 +4,10 @@ namespace CatchDesign\SSLogger;
 
 use AbstractQueuedJob;
 use QueuedJob;
-use DataObject;
+
+use SilverStripe\Assets\File;
+use SilverStripe\ORM\DataObject;
+
 
 
 /**
@@ -112,7 +115,7 @@ class AssetLogCleanup extends AbstractQueuedJob implements QueuedJob {
 
                 // delete the files
                 unlink($this->getCLogDir() . '/' . $file);
-                if ($iFile = DataObject::get_one('File', 'Filename = \'' . $this->getCLogDir() . '/' . $logFile . '\''))
+                if ($iFile = DataObject::get_one(File::class, 'Filename = \'' . $this->getCLogDir() . '/' . $logFile . '\''))
                     $iFile->delete();
 
                 // process tracker

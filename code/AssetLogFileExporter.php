@@ -2,12 +2,11 @@
 
 namespace CatchDesign\SSLogger;
 
-use Controller;
-use HTTP;
-use Permission;
-use Security;
-use File;
-
+use SilverStripe\Control\HTTP;
+use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
+use SilverStripe\Assets\File;
+use SilverStripe\Control\Controller;
 
 class AssetLogFileExporter extends Controller {
 
