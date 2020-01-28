@@ -1,5 +1,12 @@
 <?php
 
+// SS < 3.7 support
+if (version_compare(PHP_VERSION, '7.2.0', '<')) {
+    if (!class_exists('SS_Object')) {
+        class_alias('Object', 'SS_Object');
+    }
+}
+
 class CLog extends SS_Object implements PermissionProvider {
 
     const EMERG   = Zend_Log::EMERG;    // 0: Emergency: system is unusable
