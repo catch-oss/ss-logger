@@ -32,7 +32,7 @@ class SSLogBackend extends CLogBackend {
             case CLog::DEBUG:    // 7: Debug: debug messages
                 $logger->debug($msg);
             default:
-                $logger->log($msg);
+                $logger->log(CLog::NOTICE, $msg);
         }
     }
 }
