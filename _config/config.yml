@@ -1,8 +1,8 @@
 ---
 Name: ss-logger
 After:
-  - 'framework/*'
-  - 'cms/*'
+  - "#framework"
+  - "#cms"
 ---
 SiteConfig:
   extensions:
