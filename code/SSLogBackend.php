@@ -15,22 +15,31 @@ class SSLogBackend extends CLogBackend {
         switch ($severity) {
             case CLog::EMERG:    // 0: Emergency: system is unusable
                 $logger->emergency($msg);
+                break;
             case CLog::ALERT:    // 1: Alert: action must be taken immediately
                 $logger->alert($msg);
+                break;
             case CLog::CRIT:     // 2: Critical: critical conditions
                 $logger->critical($msg);
+                break;
             case CLog::ERR:      // 3: Error: error conditions
                 $logger->error($msg);
+                break;
             case CLog::WARN:     // 4: Warning: warning conditions
                 $logger->warning($msg);
+                break;
             case CLog::NOTICE:   // 5: Notice: normal but significant condition
                 $logger->notice($msg);
+                break;
             case CLog::INFO:     // 6: Informational: informational messages
                 $logger->info($msg);
+                break;
             case CLog::DEBUG:    // 7: Debug: debug messages
                 $logger->debug($msg);
+                break;
             default:
                 $logger->log(CLog::NOTICE, $msg);
+                break;
         }
     }
 }
