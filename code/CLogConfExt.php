@@ -2,8 +2,6 @@
 
 namespace CatchDesign\SSLogger;
 
-use CatchDesign\SSLogger\SSLogBackend;
-use CatchDesign\SSLogger\CLogBackend;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Forms\DropdownField;
@@ -26,9 +24,10 @@ class CLogConfExt extends DataExtension {
         // classes
         $classes = ClassInfo::subclassesFor(CLogBackend::class);
         $flt = [];
-        foreach ($classes as $k => $v) {
-            if ($k != CLogBackend::class)
-                $flt[$k] = $v;
+        foreach ($classes as $v) {
+            if ($v != CLogBackend::class) {
+                $flt[$v] = $v;
+            }
         }
 
         // update
@@ -36,7 +35,7 @@ class CLogConfExt extends DataExtension {
             'Root.CLog',
             [
                 new DropdownField(
-                    CLogBackend::class,
+                    'CLogBackend',
                     'Logging Interface',
                     $flt
                 ),

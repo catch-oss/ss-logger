@@ -22,7 +22,18 @@ class CLog implements PermissionProvider {
     const WARN    = "WARN";     // 4: Warning: warning conditions
     const NOTICE  = "NOTICE";   // 5: Notice: normal but significant condition
     const INFO    = "INFO";     // 6: Informational: informational messages
-    const DEBUG   = "DEBUG";   // 7: Debug: debug messages
+    const DEBUG   = "DEBUG";    // 7: Debug: debug messages
+
+    const SEVERITY_MAP = [
+        self::EMERG   => 0,
+        self::ALERT   => 1,
+        self::CRIT    => 2,
+        self::ERR     => 3,
+        self::WARN    => 4,
+        self::NOTICE  => 5,
+        self::INFO    => 6,
+        self::DEBUG   => 7,
+    ];
 
     protected static $logger;
 

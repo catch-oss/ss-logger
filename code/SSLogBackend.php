@@ -4,8 +4,6 @@ namespace CatchDesign\SSLogger;
 
 use SilverStripe\Core\Injector\Injector;
 use Psr\Log\LoggerInterface;
-use SilverStripe\Security\Security;
-use CatchDesign\SSLogger\CLog;
 
 /**
  * SS_Log will drop log attempts log debug level events in prod etc

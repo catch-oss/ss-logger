@@ -4,9 +4,21 @@ After:
   - "#framework"
   - "#cms"
 ---
+
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - CatchDesign\SSLogger\CLogConfExt
+
 SilverStripe\Assets\File:
   extensions:
     - CatchDesign\SSLogger\AssetLogFileExt
+
+SilverStripe\Core\Injector\Injector:
+  Psr\Log\LoggerInterface:
+    calls:
+      LogFileHandler: [ pushHandler, [ '%$LogFileHandler' ] ]
+  LogFileHandler:
+    class: Monolog\Handler\StreamHandler
+    constructor:
+      - "log/silverstripe.log"
+      - "debug"
