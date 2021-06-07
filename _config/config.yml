@@ -4,9 +4,9 @@ After:
   - "#framework"
   - "#cms"
 ---
-SiteConfig:
+SilverStripe\SiteConfig\SiteConfig:
   extensions:
-    - CLogConfExt
-File:
+    - CatchDesign\SSLogger\CLogConfExt
+SilverStripe\Assets\File:
   extensions:
-    - AssetLogFileExt
+    - CatchDesign\SSLogger\AssetLogFileExt
